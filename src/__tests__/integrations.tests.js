@@ -28,12 +28,18 @@ it('can fetch a list of comments and display them', (done) => {
   wrapped.find('.fetch-comments').simulate('click');
 
   // Introduce a tiny little pause
-  setTimeout(() => {
+  // setTimeout(() => {
+  //   wrapped.update();
+  //   expect(wrapped.find('li').length).toEqual(2);
+  //   done();
+  //   wrapped.unmount();
+  // }, 100);
+  moxios.wait(() => {
     wrapped.update();
     expect(wrapped.find('li').length).toEqual(2);
     done();
     wrapped.unmount();
-  }, 100);
+  });
 
   // Expect to find a list of comments!
   // expect(wrapped.find('li').length).toEqual(2);
